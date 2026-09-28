@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ana 💖</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fff0f5, #ffe4ec, #ffd6e0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .botao-container {
+            text-align: center;
+            transition: opacity 0.5s ease;
+        }
+
+        .botao {
+            padding: 18px 40px;
+            font-size: 22px;
+            background: linear-gradient(45deg, #ff69b4, #ff85c1);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .botao:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.5);
+        }
+
+        .conteudo {
+            display: none;
+            max-width: 520px;
+            text-align: center;
+            animation: aparecer 1s ease forwards;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes aparecer {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .texto {
+            font-size: 20px;
+            color: #8b0050;
+            line-height: 1.8;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(255, 105, 180, 0.2);
+            margin-top: 20px;
+        }
+
+        .casinha {
+            margin-top: 25px;
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+        }
+
+        .assinatura {
+            margin-top: 15px;
+            font-size: 22px;
+            color: #c71585;
+            font-weight: bold;
+        }
+
+        .flor {
+            position: fixed;
+            top: -50px;
+            font-size: 28px;
+            animation: cair linear forwards;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes cair {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+
+        .coracao {
+            margin-top: 15px;
+            font-size: 40px;
+            animation: bater 1s infinite alternate;
+        }
+
+        @keyframes bater {
+            from { transform: scale(1); }
+            to { transform: scale(1.2); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="botao-container" id="inicio">
+        <button class="botao" onclick="abrir()">💖 Clica aqui 💖</button>
+    </div>
+
+    <div class="conteudo" id="conteudo">
+        <div class="texto">
+            <h2>Para Ana 💗</h2>
+            <p>
+                Ana… 💖<br><br>
+
+                Queria te dizer algo de um jeitinho especial,<br>
+                diferente de mensagem, diferente de ligação…<br>
+                algo que ficasse só nosso. 💫<br><br>
+
+                Cada dia que conversamos eu percebo mais:<br>
+                você é a primeira coisa que eu quero ver quando acordo,<br>
+                e a última que quero lembrar antes de dormir.<br><br>
+
+                Você me acalma quando tudo fica confuso,<br>
+                me faz sorrir sem nem precisar fazer muito,<br>
+                e me faz sentir que tudo vai ficar bem só por estar falando com você. 💗<br><br>
+
+                Eu gosto de você, Ana.<br>
+                De um jeito que cresce a cada dia,<br>
+                de um jeito que não passa, não muda, não acaba.<br><br>
+
+                Pode contar comigo pra qualquer coisa,<br>
+                seja pra conversar, pra desabafar, pra rir ou pra ficar em silêncio.<br>
+                Quando quiser falar, eu tô aqui ouvindo.<br>
+                E quando não quiser, eu tô aqui do mesmo jeito, respeitando. 💗<br><br>
+
+                Obrigado por ser você.<br>
+                Obrigado por estar aqui.<br><br>
+
+                <img src="casinha_rosa_03.png" alt="Casinha rosa" class="casinha"><br><br>
+
+                <span class="assinatura">Com carinho,<br>Brayan ❤️</span>
+            </p>
+        </div>
+        <div class="coracao">💗</div>
+    </div>
+
+    <audio id="musica" loop>
+        <source src="MUSICA.mp3" type="audio/mpeg">
+    
+
+<script>
+function abrir() {
+    document.getElementById('inicio').style.display = 'none';
+    document.getElementById('conteudo').style.display = 'block';
+    
+    const musica = document.getElementById('musica');
+    musica.volume = 0.5;
+    musica.play().catch(e => console.log('Clica pra tocar a música', e));
+    
+    cairFlores();
+}
+
+function cairFlores() {
+    const flores = ['🌸', '🌷', '🌹', '💐', '🌺', '💖', '✨', '💗', '💕', '🌼'];
+    
+    setInterval(() => {
+        const flor = document.createElement('div');
+        flor.classList.add('flor');
+        flor.textContent = flores[Math.floor(Math.random() * flores.length)];
+        flor.style.left = Math.random() * 100 + 'vw';
+        flor.style.animationDuration = (Math.random() * 3 + 4) + 's';
+        document.body.appendChild(flor);
+        
+        setTimeout(() => flor.remove(), 7000);
+    }, 250);
+}
+</script>
+
+</body>
+</html>
